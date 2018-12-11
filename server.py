@@ -1,5 +1,6 @@
 from sanic import Sanic
 from sanic import response
+import sys
 import time
 from game import *
 from config import *
@@ -70,5 +71,7 @@ async def notify_server_started(app, loop):
     logger.info("started")
 
 if __name__ == "__main__":
+    if sys.argv[1].isdigit():
+        port = int(sys.argv[1])
     init_logger('SERVER', 'DEBUG')
     app.run(host="0.0.0.0", port=port)
