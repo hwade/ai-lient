@@ -9,7 +9,7 @@ server_host = '{}:{}'.format(server_ip, server_port)
 competition_url = '{}/{}'.format(server_host, 'competitions')
 
 pc = socket.getfqdn(socket.gethostname())
-client1_ip = '10.118.59.111'#socket.gethostbyname(pc)
+client1_ip = '10.118.164.188'#socket.gethostbyname(pc)
 client2_ip = client1_ip
 client1_port = 9000
 client2_port = 9001

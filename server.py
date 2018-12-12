@@ -3,7 +3,6 @@ from sanic import response
 import sys
 import time
 from game import *
-from config import *
 from logger import *
 
 import logging
@@ -12,6 +11,7 @@ logger = logging.getLogger("SERVER")
 
 app = Sanic()
 
+PLAYER_NAME = None
 
 @app.post("/start")
 async def start(req):
@@ -40,7 +40,7 @@ async def step(req):
     game.walls = walls
     game.jobs = jobs
 
-    game.refresh(player_name)
+    game.refresh(PLAYER_NAME)
     action = game.step()
     logger.info("action: %s", action)
 
@@ -73,5 +73,6 @@ async def notify_server_started(app, loop):
 if __name__ == "__main__":
     if sys.argv[1].isdigit():
         port = int(sys.argv[1])
+        PLAYER_NAME = sys.argv[2]
     init_logger('SERVER', 'DEBUG')
     app.run(host="0.0.0.0", port=port)

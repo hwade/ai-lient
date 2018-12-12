@@ -69,8 +69,8 @@ class Game(object):
 
     def step(self):
         if self.player1.name == self.current_player.name:
-            return getDirectionByCostMap(self, alpha=1.5)
-        return getDirectionByCostMap(self, alpha=0.5)
+            return getDirectionByCostMap(self, alpha=1, threshold=6)
+        return getDirectionByCostMap(self, alpha=1, threshold=7)
 
 
 game = Game()
